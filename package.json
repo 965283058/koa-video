@@ -1,0 +1,26 @@
+{
+  "name": "koa-video",
+  "version": "1.0.2",
+  "description": "node koa2 paly video/audio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa2",
+    "video",
+    "audio",
+    "mp4",
+    "mp3"
+  ],
+  "author": "965283058@qq.com",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/965283058/koa-video.git"
+  },
+  "bugs": {
+    "url": "https://github.com/965283058/koa-video/issues"
+  },
+  "homepage": "https://github.com/965283058/koa-video#readme"
+}
