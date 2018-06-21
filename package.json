@@ -1,6 +1,6 @@
 {
   "name": "koa-video",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "node koa2 paly video/audio",
   "main": "index.js",
   "scripts": {

@@ -8,7 +8,7 @@ Installation
 Install the plugin with npm:
 
 ```shell
-$ npm install koa-video --save-dve
+$ npm install koa-video --save
 ```
 
 
