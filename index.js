@@ -30,15 +30,32 @@ let readFile = async(ctx, options)=> {
     if (stats.isFile()) {
         return new Promise((rev, rej)=> {
             var stream = fs.createReadStream(diskPath, {start: start, end: end});
+            ctx.res.on("close", function () {
+                stream.destroy()
+            })
             ctx.set("Content-Range", `bytes ${start}-${end}/${stats.size}`)
             ctx.set("Accept-Ranges", `bytes`)
             ctx.status = 206
             ctx.type = getContentType(ext.replace(".", ""))
             stream.on("open", function (length) {
-                stream.pipe(ctx.res);
+                if (ctx.res.socket.writable) {
+                    try {
+                        stream.pipe(ctx.res);
+                    } catch (e) {
+                        stream.destroy()
+                    }
+                } else {
+                    stream.destroy()
+                }
             })
             stream.on("error", function (err) {
-                ctx.body = err;
+                if (ctx.res.socket.writable) {
+                    try {
+                        ctx.body = err;
+                    } catch (e) {
+                        stream.destroy()
+                    }
+                }
                 rej()
             });
             stream.on("end", function (err) {
